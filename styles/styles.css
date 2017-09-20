@@ -1,0 +1,23 @@
+body {
+    background-color: cornflowerblue;
+}
+
+.login {
+    width: 45%;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: cornsilk;
+    color: darkblue;
+    text-align: center;
+    padding: 35px;
+}
+
+h3 {
+    color: red;
+    font-weight: bold;
+}
+
+form {
+    padding: 5px;
+}
