@@ -2,14 +2,14 @@
     session_start();
     
     // If "Retry" button is pressed
-    if(isset($_POST['retry'])){
+    if(isset(filter_input(INPUT_POST, 'retry'))){
         sleep(10); // delay page load by 10 seconds
         unset($_SESSION['userAuth']); // unset userAuth variable to load clean page
         header('Location:index.php');
     }
     
     // If "Logout" button is pressed
-    if(isset($_POST['logout'])){
+    if(isset(filter_input(INPUT_POST, 'logout'))){
         // Unset/destroy session data
         session_unset();
         session_destroy();
@@ -17,13 +17,13 @@
     }
     
     // Check if form POST variables are set
-    if(isset($_POST['username'])){
-        if(isset($_POST['password'])){
+    if(isset(filter_input(INPUT_POST, 'username'))){
+        if(isset(filter_input(INPUT_POST, 'password'))){
             $user = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
             $pass = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
             // Ensure $_POST variables are reset with each page load
-            unset($_POST['username']);
-            unset($_POST['password']);
+            unset(filter_input(INPUT_POST, 'username'));
+            unset(filter_input(INPUT_POST, 'password'));
         }
     }
     
@@ -81,8 +81,8 @@
     }
     
     // Check if Captcha is Entered Correctly
-    if(isset($_POST["captcha"]) && $_POST["captcha"] != "" 
-            && $_SESSION["code"] == $_POST["captcha"] 
+    if(isset(filter_input(INPUT_POST, "captcha")) && filter_input(INPUT_POST, "captcha") != "" 
+            && $_SESSION["code"] == filter_input(INPUT_POST, "captcha") 
             && $_SESSION['userAuth'] == 'valid'){
         $_SESSION['validSession'] = true;
         header('Location:index.php');

@@ -19,5 +19,5 @@
     
     imagepng($im);
     imageDestroy($im);
-?>
+
 
